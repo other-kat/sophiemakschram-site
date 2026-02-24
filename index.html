@@ -1,0 +1,69 @@
+---
+layout: home
+---
+<body>
+    <p>
+      <a href="mailto:sophiemakschram@hotmail.com">email</a>
+    </p>
+    <section id="projects" class="section">
+      <button class="accordion"><p>projects</p></button>
+      <div class="panel">
+      <br>
+      <a href="/writings/2026-01-15-narrowcasting---a-multi-band-narrative">Narrowcasting: A Multi-Band Narrative for Robida Collectives TRANSMISSIONS: Radio Essays on Edges, Crossings and Narrowcasting Borderlands publication.</a>
+      <br>
+      <br>
+      <a href="/writings/2023-11-27-Your-Post-Goes-Against-Our-Community-Guidelines">Your Post Goes Against Our Community Guidelines: an I Love Or Hate Everyday (2022-2023) - Autoethnography</a>
+      <br>
+      </div>
+    </section>
+    <section id="performances" class="section">
+      <button class="accordion"><p>performances</p></button>
+      <div class="panel">
+      <br>
+      {% include about.html %}
+      <br>
+      </div>
+    </section>
+    <section id="writing" class="section">
+      <button class="accordion"><p>writing</p></button>
+      <div class="panel">
+      <br>
+      {% include about.html %}
+      <br>
+      </div>
+    </section>
+   <section id="workshops" class="section">
+      <button class="accordion"><p>workshops & talks</p></button>
+      <div class="panel">
+      <br>
+      {% include about.html %}
+      <br>
+      </div>
+    </section>
+    <section id="about" class="section">
+      <button class="accordion"><p>about</p></button>
+      <div class="panel">
+      <br>
+      <p>
+      {% include about.html %}
+    </p>
+      <br>
+      </div>
+    </section>
+  </body>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
