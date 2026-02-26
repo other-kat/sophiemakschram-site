@@ -17,16 +17,20 @@ html {
   margin: 0;
   padding: 0;
 }
-
+article {
+  color: black;
+  text-shadow: 0 0 1vw white;
+}
 body {
     font-size:2.5vh;
     overflow: hidden;
-    background-image: url("bg.jpg");
+    background-image: url("bg1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
+    color: black;
     height: 110%;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 20px;
     line-height: 1.4;
 }
 
@@ -115,17 +119,19 @@ a.sub {
 }
 .active, .accordion:hover {
    color: black;
-  background-color: #c5dbd8;
-  text-shadow: none;
+  text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
+  
 }
 .panel {
   max-height: 0.0;
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   color: #c5dbd8;
+  
 }
 .button {
    color: #c5dbd8;
+   height: 2em;
 }
 
 :root {
@@ -133,7 +139,7 @@ font-family: "Fraunces", serif;
     font-size:2.5vh;
     text-align: right;
     overflow: hidden;
-    background-image: url("bg.jpg");
+    background-image: url("bg1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     height: 110%;

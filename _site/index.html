@@ -7,6 +7,11 @@
 	<title>Sophie Mak Schram</title>
 </head>
 <header>
+  <div  class="buttonbar">
+    <button class="js-ripples-disable disable">stop ripples</button>
+  </div>
+  <div class="content">
+  </div>
   <h1>sophie mak-schram</h1>
 </header>
 <body>
@@ -29,7 +34,9 @@
       <button class="accordion"><p>performances</p></button>
       <div class="panel">
       <br>
-      <p>makes things.  this is where you put some sort of bio if you want</p>
+      <article>
+<p>makes things.  this is where you put some sort of bio if you want</p>
+</article>
       <br>
       </div>
     </section>
@@ -37,7 +44,9 @@
       <button class="accordion"><p>writing</p></button>
       <div class="panel">
       <br>
-      <p>makes things.  this is where you put some sort of bio if you want</p>
+      <article>
+<p>makes things.  this is where you put some sort of bio if you want</p>
+</article>
       <br>
       </div>
     </section>
@@ -45,7 +54,9 @@
       <button class="accordion"><p>workshops & talks</p></button>
       <div class="panel">
       <br>
-      <p>makes things.  this is where you put some sort of bio if you want</p>
+      <article>
+<p>makes things.  this is where you put some sort of bio if you want</p>
+</article>
       <br>
       </div>
     </section>
@@ -54,7 +65,9 @@
       <div class="panel">
       <br>
       <p>
-      <p>makes things.  this is where you put some sort of bio if you want</p>
+      <article>
+<p>makes things.  this is where you put some sort of bio if you want</p>
+</article>
     </p>
       <br>
       </div>
@@ -75,6 +88,27 @@ for (i = 0; i < acc.length; i++) {
     }
   });
 }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="jquery.ripples.js"></script>
+<script>
+$(document).ready(function() {
+  try {
+    $('body').ripples({
+      resolution: 512,
+      dropRadius: 100, //px
+      perturbance: 0.01,
+    });
+  }
+  catch (e) {
+    $('.error').show().text(e);
+  }
+
+  $('.js-ripples-disable').on('click', function() {
+    $('body, main').ripples('destroy');
+    $(this).hide();
+  });
+});
 </script>
 </body>
 </html>
