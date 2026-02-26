@@ -23,10 +23,35 @@
       <button class="accordion"><p>projects</p></button>
       <div class="panel">
       <br>
-      <a href="/writings/2026-01-15-narrowcasting---a-multi-band-narrative">Narrowcasting: A Multi-Band Narrative for Robida Collectives TRANSMISSIONS: Radio Essays on Edges, Crossings and Narrowcasting Borderlands publication.</a>
-      <br>
-      <br>
-      <a href="/writings/2023-11-27-Your-Post-Goes-Against-Our-Community-Guidelines">Your Post Goes Against Our Community Guidelines: an I Love Or Hate Everyday (2022-2023) - Autoethnography</a>
+      <div id="post">
+    
+    
+    
+    <b> Multi-Band Excitation (Topolò Installation) (  )</b>
+    <br>
+    
+    <b> shedding at Gallery Puzić (  )</b>
+    <br>
+    
+    <b> Work, From Home Solo Exhibition (  )</b>
+    <br>
+    
+    <b> shedding femme at Detritus, Tension Fine Art Gallery (  )</b>
+    <br>
+    
+    <b> She / They / He at Metafizikel, Artaud Performance Centre (  )</b>
+    <br>
+    
+    <b> Manipulated Labour at Peopling The Palace 2018 (  )</b>
+    <br>
+    
+    <b> Gendered Viewing (  )</b>
+    <br>
+    
+    <b> Songs To Sleep I at University of Hertfordshire End Of Year Show (  )</b>
+    <br>
+    
+  </div>
       <br>
       </div>
     </section>
@@ -73,17 +98,24 @@
       </div>
     </section>
   </body>
+
 <script>
-    var acc = document.getElementsByClassName("accordion");
+var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
   acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
+
     var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
+    var isOpen = panel.style.maxHeight;
+
+    for (var j = 0; j < acc.length; j++) {
+      acc[j].classList.remove("active");
+      acc[j].nextElementSibling.style.maxHeight = null;
+    }
+
+    if (!isOpen) {
+      this.classList.add("active");
       panel.style.maxHeight = panel.scrollHeight + "px";
     }
   });
