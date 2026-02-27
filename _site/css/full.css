@@ -143,6 +143,65 @@ a.sub {
    font-family: "Fraunces", serif;
 }
 
+/* Modal overlay */
+.modal {
+  display: none; /* hidden on load */
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  justify-content: center;
+  align-items: flex-start; /* start from top */
+}
+
+/* Modal box */
+.modal-box {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;
+  max-height: 70%;
+  background: rgba(255,255,255,0.2); /* semi-transparent box */
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: default;
+}
+
+/* Header (draggable) */
+.modal-header {
+  background: rgba(50,50,50,0.2);
+  align: center;
+  color: black;
+  font-family: "Fraunces", serif;
+  text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
+  padding: 5px;
+  cursor: move;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close button */
+.modal-header .close {
+  font-size: 22px;
+  color: black;
+  font-family: "Fraunces", serif;
+  text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
+  cursor: pointer;
+}
+
+/* Body */
+.modal-body {
+  align: center;
+  padding: 15px;
+  overflow-y: auto; /* scroll if content too tall */
+  flex: 1; /* fills remaining height */
+  word-wrap: break-word;
+}
+
 :root {
     font-family: "Fraunces", serif;
     font-size:2.5vh;

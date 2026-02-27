@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Multi-Band Excitation (Topolò Installation)"
+link: projects/multibandexcitation.html
 date:   2025-08-10 22:23:35 +0100
 categories: blog
 ---
