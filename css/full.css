@@ -23,6 +23,10 @@ article {
   color: #c5dbd8;
   text-shadow: 0 0 1vw black;
 }
+iframe {
+  padding: 20px;
+  align: left;
+}
 body {
     font-size:2.5vh;
     overflow: hidden;
@@ -125,7 +129,6 @@ a.sub {
 .active, .accordion:hover {
    color: black;
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
-  
 }
 .panel {
   max-height: 0.0;

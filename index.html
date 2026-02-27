@@ -15,8 +15,7 @@ layout: home
     {% if post.status == 'published' %}
     {% endif %}
     {% for post in projects limit:50  %}
-    <b> {{ post.title }} ( {{ post.postdate }} )</b>
-    <br>
+    <a href="{{ post.url }}">{{ post.title }} ( {{ post.postdate }} )</a></b>
     {% endfor %}
   </div>
       <br>
@@ -26,7 +25,14 @@ layout: home
       <button class="accordion"><p>performances</p></button>
       <div class="panel">
       <br>
-      {% include about.html %}
+      <div id="post">
+    {% assign performances = site.performances | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in performances limit:50  %}
+    <a href="{{ post.url }}">{{ post.title }} ( {{ post.postdate }} )</a></b>
+    {% endfor %}
+    </div>
       <br>
       </div>
     </section>
@@ -34,7 +40,14 @@ layout: home
       <button class="accordion"><p>writing</p></button>
       <div class="panel">
       <br>
-      {% include about.html %}
+      <div id="post">
+    {% assign writing = site.writing | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in writing limit:50  %}
+    <a href="{{ post.url }}">{{ post.title }} ( {{ post.postdate }} )</a></b>
+    {% endfor %}
+    </div>
       <br>
       </div>
     </section>
@@ -42,7 +55,14 @@ layout: home
       <button class="accordion"><p>workshops & talks</p></button>
       <div class="panel">
       <br>
-      {% include about.html %}
+      <div id="post">
+    {% assign workshops = site.workshops | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in workshops limit:50  %}
+    <a href="{{ post.url }}">{{ post.title }} ( {{ post.postdate }} )</a></b>
+    {% endfor %}
+    </div>
       <br>
       </div>
     </section>
