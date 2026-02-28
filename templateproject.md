@@ -10,16 +10,25 @@ categories: blog
 
 -->
 
-<!-- place your image here -->
+<!-- place your image here 
+
+how it works is you direct the source to where the image is and its name in the assets folder
+
+-->
 <img src="/assets/img/performances/2019three" height="auto" width="100%"/>
 
-<!-- place audio link here -->
+<!-- place audio link here 
+
+same as images but for sound! -->
 <audio controls>
   <source src="/assets/scores/music/mbe-clip.mp3" type="audio/mpeg">
+  	<!-- choose an error message -->
 Your browser does not support good sounds.
 </audio> 
 
-<!-- link to further materials -->
+<!-- link to further materials 
+paste your external link into the "" marks and then the text after "> and before </a> is the clickable text
+-->
 <a href="https://www.youtube.com/watch?v=9s_cLCeQpCA&ab_channel=kat">link to recording of first performance</a>
 
 <!-- write about the project here! -->
