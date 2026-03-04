@@ -3,7 +3,16 @@
 @font-face { font-family: Fraunces; src: url('Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf'); } 
 
 h1 {
-  @apply text-4xl tracking-tighter mb-3 text-center lg:text-7xl;
+font-size:4vh;
+color: black;
+text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
+  transition: 0.4s;
+}
+
+h1:hover {
+  color: #c5dbd8;
+  text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
+  transition: 0.4s;
 }
 
 h3 {
@@ -135,14 +144,39 @@ a.sub {
   overflow: hidden;
   transition: max-height 0.2s ease-out;
   color: #c5dbd8;
-  
 }
 .button {
+  background-color: none;
+  border: none;
+  box-shadow: none;
+  padding: 2em 2em;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
    color: #c5dbd8;
    height: 2em;
    font-family: "Fraunces", serif;
 }
-
+.project-btn {
+  background-color: rgba(0,0,0,0.0);
+  border: none;
+  box-shadow: none;
+  padding: none;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #c5dbd8;
+  text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
+  font-family: "Fraunces", serif;
+  transition: 0.4s;
+}
+.project-btn:hover {
+  color: black;
+  text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
+  transition: 0.4s;
+}
 /* Modal overlay */
 .modal {
   display: none; /* hidden on load */

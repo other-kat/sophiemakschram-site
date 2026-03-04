@@ -15,7 +15,14 @@ layout: home
     {% if post.status == 'published' %}
     {% endif %}
     {% for post in projects limit:50  %}
-    <a href="{{ post.url }}">{{ post.title }} ( {{ post.postdate }} )</a></b>
+<div class="project-item">
+  <button class="project-btn">
+    {{ post.title }}
+  </button>
+  <div class="project-content" style="display:none;">
+    {{ post.content }}
+  </div>
+</div>
     {% endfor %}
   </div>
       <br>
@@ -30,7 +37,7 @@ layout: home
     {% if post.status == 'published' %}
     {% endif %}
     {% for post in performances limit:50  %}
-    <a href="{{ post.url }}">{{ post.title }} ( {{ post.postdate }} )</a></b>
+    <a href="{{ post.url }}">{{ post.title }}</a></b>
     {% endfor %}
     </div>
       <br>
@@ -66,18 +73,17 @@ layout: home
       <br>
       </div>
     </section>
-    <section id="about" class="section">
-      <button class="accordion"><p>about</p></button>
-      <div class="panel">
-      <br>
-      <p>
-      {% include about.html %}
-    </p>
-      <br>
-      </div>
-    </section>
-  </body>
 
+   <div id="projectModal" class="modal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <span id="closeModal" class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+    </div>
+    <div id="modalContent" class="modal-body"></div>
+  </div>
+</div>
+<!-- accordion script -->
 <script>
 var acc = document.getElementsByClassName("accordion");
 var i;
@@ -100,6 +106,7 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 </script>
+<!-- ripple script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="jquery.ripples.js"></script>
 <script>
@@ -119,5 +126,64 @@ $(document).ready(function() {
     $('body, main').ripples('destroy');
     $(this).hide();
   });
+});
+</script>
+<script>
+  // Modal script
+var modal = document.getElementById("projectModal");
+var modalBox = modal.querySelector(".modal-box");
+var modalContent = document.getElementById("modalContent");
+var modalTitle = document.getElementById("modalTitle");
+var closeBtn = document.getElementById("closeModal");
+
+document.addEventListener("click", function(e) {
+  var btn = e.target.closest(".project-btn");
+  if (!btn) return;
+
+  var contentDiv = btn.parentElement.querySelector(".project-content");
+  if (!contentDiv) return;
+
+  modalTitle.textContent = btn.textContent;
+  modalContent.innerHTML = contentDiv.innerHTML;
+  modal.style.display = "flex";
+
+  modalBox.style.left = (window.innerWidth / 2 - modalBox.offsetWidth / 2) + "px";
+  modalBox.style.top = "80px";
+  modalBox.style.transform = "none";
+});
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+  modalContent.innerHTML = "";
+}
+
+modal.onclick = function(e) {
+  if (e.target === modal) {
+    modal.style.display = "none";
+    modalContent.innerHTML = "";
+  }
+}
+
+var isDragging = false;
+var offsetX, offsetY;
+
+var header = modalBox.querySelector(".modal-header");
+header.addEventListener("mousedown", function(e) {
+  isDragging = true;
+  offsetX = e.clientX - modalBox.offsetLeft;
+  offsetY = e.clientY - modalBox.offsetTop;
+  document.body.style.userSelect = "none";
+});
+
+document.addEventListener("mousemove", function(e) {
+  if (!isDragging) return;
+  modalBox.style.left = e.clientX - offsetX + "px";
+  modalBox.style.top = e.clientY - offsetY + "px";
+  modalBox.style.transform = "none";
+});
+
+document.addEventListener("mouseup", function() {
+  isDragging = false;
+  document.body.style.userSelect = "auto";
 });
 </script>
