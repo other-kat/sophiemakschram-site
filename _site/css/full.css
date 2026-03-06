@@ -29,8 +29,8 @@ html {
   padding: 0;
 }
 article {
-  color: #c5dbd8;
-  text-shadow: 0 0 1vw black;
+  color: black;
+  text-shadow: 0 0 1vw #c5dbd8;
 }
 iframe {
   padding: 20px;
@@ -95,6 +95,7 @@ a:hover {
   color: black;
   background-color: #c5dbd8;
   text-shadow: none;
+  transition: 0.4s;
 }
 
 .section {
@@ -167,35 +168,56 @@ a.sub {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  color: black;
+  text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
+  font-family: "Fraunces", serif;
+  transition: 0.4s;
+}
+.project-btn:hover {
+  color: black;
+  background-color: #c5dbd8;
+  text-shadow: none;
+  transition: 0.4s;
+}
+.title-btn {
+  background-color: rgba(0,0,0,0.0);
+  border: none;
+  box-shadow: none;
+  padding: none;
+  text-align: right;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
   color: #c5dbd8;
   text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
   font-family: "Fraunces", serif;
   transition: 0.4s;
 }
-.project-btn:hover {
+.title-btn:hover {
   color: black;
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
   transition: 0.4s;
 }
 /* Modal overlay */
 .modal {
-  display: none; /* hidden on load */
   position: fixed;
   inset: 0;
-  z-index: 1000;
-  justify-content: center;
-  align-items: flex-start; /* start from top */
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Modal box */
 .modal-box {
+  z-index: 1;
+  pointer-events: all;
   position: absolute;
   top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 200px;
   width: 500px;
-  max-height: 70%;
-  background: rgba(255,255,255,0.2); /* semi-transparent box */
+  max-height: 80vh;
+  min-width: 250px;
+  min-height: 150px;
+  background: rgba(255,255,255,0.8); /* semi-transparent box */
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   display: flex;
@@ -226,7 +248,22 @@ a.sub {
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
   cursor: pointer;
 }
+/* resize */
+.resize-handle {
 
+  position: absolute;
+  width: 16px;
+  height: 16px;
+
+  bottom: 4px;
+  right: 4px;
+
+  cursor: se-resize;
+
+  background: rgba(0,0,0,0.2);
+  border-radius: 3px;
+
+}
 /* Body */
 .modal-body {
   align: center;
@@ -235,6 +272,20 @@ a.sub {
   flex: 1; /* fills remaining height */
   word-wrap: break-word;
 }
+.resize {
+  position: absolute;
+  z-index: 2;
+}
+
+.resize.top { top:-4px; left:0; width:100%; height:8px; cursor: ns-resize; }
+.resize.bottom { bottom:-4px; left:0; width:100%; height:8px; cursor: ns-resize; }
+.resize.left { left:-4px; top:0; width:8px; height:100%; cursor: ew-resize; }
+.resize.right { right:-4px; top:0; width:8px; height:100%; cursor: ew-resize; }
+
+.resize.top-left { top:-4px; left:-4px; width:12px; height:12px; cursor: nwse-resize; }
+.resize.top-right { top:-4px; right:-4px; width:12px; height:12px; cursor: nesw-resize; }
+.resize.bottom-left { bottom:-4px; left:-4px; width:12px; height:12px; cursor: nesw-resize; }
+.resize.bottom-right { bottom:-4px; right:-4px; width:12px; height:12px; cursor: nwse-resize; }
 
 :root {
     font-family: "Fraunces", serif;
