@@ -672,15 +672,7 @@ sound and interactive sound synthesis: <a href="https://otherkat.com/">Kat Macdo
       </div>
     </section>
 
-   <div id="projectModal" class="modal">
-  <div class="modal-box">
-    <div class="modal-header">
-      <span id="closeModal" class="close">&times;</span>
-      <h2 id="modalTitle"></h2>
-    </div>
-    <div id="modalContent" class="modal-body"></div>
-  </div>
-</div>
+
 <!-- accordion script -->
 <script>
 var acc = document.getElementsByClassName("accordion");
@@ -727,122 +719,154 @@ $(document).ready(function() {
 });
 </script>
 <script>
-  // Modal project script
-var modal = document.getElementById("projectModal");
-var modalBox = modal.querySelector(".modal-box");
-var modalContent = document.getElementById("modalContent");
-var modalTitle = document.getElementById("modalTitle");
-var closeBtn = document.getElementById("closeModal");
+
+let zIndexCounter = 1000;
 
 document.addEventListener("click", function(e) {
-  var btn = e.target.closest(".project-btn");
+
+  var btn = e.target.closest(".project-btn, .title-btn");
   if (!btn) return;
 
   var contentDiv = btn.parentElement.querySelector(".project-content");
   if (!contentDiv) return;
 
-  modalTitle.textContent = btn.textContent;
-  modalContent.innerHTML = contentDiv.innerHTML;
+  createModal(btn.textContent, contentDiv.innerHTML);
+
+});
+
+
+function createModal(title, content) {
+
+  var modal = document.createElement("div");
+  modal.className = "modal";
   modal.style.display = "flex";
 
-  modalBox.style.left = (window.innerWidth / 2 - modalBox.offsetWidth / 2) + "px";
-  modalBox.style.top = "80px";
-  modalBox.style.transform = "none";
-});
+  modal.innerHTML = `
+    <div class="modal-box">
+    <div class="resize top"></div>
+    <div class="resize bottom"></div>
+    <div class="resize left"></div>
+    <div class="resize right"></div>
+    <div class="resize top-left"></div>
+    <div class="resize top-right"></div>
+    <div class="resize bottom-left"></div>
+    <div class="resize bottom-right"></div>
 
-closeBtn.onclick = function() {
-  modal.style.display = "none";
-  modalContent.innerHTML = "";
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h2>${title}</h2>
+      </div>
+
+      <div class="modal-body">
+        ${content}
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  var box = modal.querySelector(".modal-box");
+
+  /* random start */
+  let offset = (zIndexCounter % 12) * 30;
+
+  box.style.left = 120 + offset + "px";
+  box.style.top = 80 + offset + "px";
+  box.style.transform = "none";
+
+  /* stacking */
+  // give each modal its own z-index on creation
+  box.style.zIndex = ++zIndexCounter;
+
+  modal.style.zIndex = box.style.zIndex;
+
+// bring modal to front when clicked anywhere inside it
+  box.addEventListener("mousedown", () => { box.style.zIndex = ++zIndexCounter; modal.style.zIndex = box.style.zIndex; });
+
+  var close = modal.querySelector(".close");
+
+  /* close button */
+  close.onclick = () => modal.remove();
+
+  /* click outside */
+
+
+  makeDraggable(box);
+  makeResizable(box);
 }
 
-modal.onclick = function(e) {
-  if (e.target === modal) {
-    modal.style.display = "none";
-    modalContent.innerHTML = "";
-  }
+
+function makeDraggable(box) {
+
+  var header = box.querySelector(".modal-header");
+
+  var isDragging = false;
+  var offsetX, offsetY;
+
+  header.addEventListener("mousedown", function(e) {
+
+    isDragging = true;
+
+    box.style.zIndex = ++zIndexCounter;
+
+    offsetX = e.clientX - box.offsetLeft;
+    offsetY = e.clientY - box.offsetTop;
+
+    document.body.style.userSelect = "none";
+  });
+
+  document.addEventListener("mousemove", function(e) {
+
+    if (!isDragging) return;
+
+    box.style.left = e.clientX - offsetX + "px";
+    box.style.top = e.clientY - offsetY + "px";
+    box.style.transform = "none";
+
+  });
+
+  document.addEventListener("mouseup", function() {
+
+    isDragging = false;
+    document.body.style.userSelect = "auto";
+
+  });
+
+}
+function makeResizable(box){
+  let startX, startY, startW, startH, startL, startT, dir = null;
+
+  box.querySelectorAll(".resize").forEach(handle => {
+    handle.addEventListener("mousedown", e => {
+      dir = handle.classList[1];
+      startX = e.clientX;
+      startY = e.clientY;
+      startW = box.offsetWidth;
+      startH = box.offsetHeight;
+      startL = box.offsetLeft;
+      startT = box.offsetTop;
+      document.body.style.userSelect = "none";
+      e.stopPropagation();
+    });
+  });
+
+  document.addEventListener("mousemove", e => {
+    if(!dir) return;
+    let dx = e.clientX - startX;
+    let dy = e.clientY - startY;
+
+    if(dir.includes("right")) box.style.width = startW + dx + "px";
+    if(dir.includes("left")) { box.style.width = startW - dx + "px"; box.style.left = startL + dx + "px"; }
+    if(dir.includes("bottom")) box.style.height = startH + dy + "px";
+    if(dir.includes("top")) { box.style.height = startH - dy + "px"; box.style.top = startT + dy + "px"; }
+  });
+
+  document.addEventListener("mouseup", () => {
+    dir = null;
+    document.body.style.userSelect = "auto";
+  });
 }
 
-var isDragging = false;
-var offsetX, offsetY;
-
-var header = modalBox.querySelector(".modal-header");
-header.addEventListener("mousedown", function(e) {
-  isDragging = true;
-  offsetX = e.clientX - modalBox.offsetLeft;
-  offsetY = e.clientY - modalBox.offsetTop;
-  document.body.style.userSelect = "none";
-});
-
-document.addEventListener("mousemove", function(e) {
-  if (!isDragging) return;
-  modalBox.style.left = e.clientX - offsetX + "px";
-  modalBox.style.top = e.clientY - offsetY + "px";
-  modalBox.style.transform = "none";
-});
-
-document.addEventListener("mouseup", function() {
-  isDragging = false;
-  document.body.style.userSelect = "auto";
-});
-</script>
-<script>
-  // Modal TITAL script
-var modal = document.getElementById("projectModal");
-var modalBox = modal.querySelector(".modal-box");
-var modalContent = document.getElementById("modalContent");
-var modalTitle = document.getElementById("modalTitle");
-var closeBtn = document.getElementById("closeModal");
-
-document.addEventListener("click", function(e) {
-  var btn = e.target.closest(".title-btn");
-  if (!btn) return;
-
-  var contentDiv = btn.parentElement.querySelector(".project-content");
-  if (!contentDiv) return;
-
-  modalTitle.textContent = btn.textContent;
-  modalContent.innerHTML = contentDiv.innerHTML;
-  modal.style.display = "flex";
-
-  modalBox.style.left = (window.innerWidth / 2 - modalBox.offsetWidth / 2) + "px";
-  modalBox.style.top = "80px";
-  modalBox.style.transform = "none";
-});
-
-closeBtn.onclick = function() {
-  modal.style.display = "none";
-  modalContent.innerHTML = "";
-}
-
-modal.onclick = function(e) {
-  if (e.target === modal) {
-    modal.style.display = "none";
-    modalContent.innerHTML = "";
-  }
-}
-
-var isDragging = false;
-var offsetX, offsetY;
-
-var header = modalBox.querySelector(".modal-header");
-header.addEventListener("mousedown", function(e) {
-  isDragging = true;
-  offsetX = e.clientX - modalBox.offsetLeft;
-  offsetY = e.clientY - modalBox.offsetTop;
-  document.body.style.userSelect = "none";
-});
-
-document.addEventListener("mousemove", function(e) {
-  if (!isDragging) return;
-  modalBox.style.left = e.clientX - offsetX + "px";
-  modalBox.style.top = e.clientY - offsetY + "px";
-  modalBox.style.transform = "none";
-});
-
-document.addEventListener("mouseup", function() {
-  isDragging = false;
-  document.body.style.userSelect = "auto";
-});
 </script>
 </body>
 </html>
