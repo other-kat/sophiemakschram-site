@@ -94,7 +94,28 @@ layout: home
       <br>
       </div>
     </section>
-
+<section id="tailbenttravel" class="section">
+      <button class="accordion"><p>tail bent travel (2016 - 2019)</p></button>
+      <div class="panel">
+      <br>
+      <div id="post">
+    {% assign tailbenttravel = site.tailbenttravel | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in tailbenttravel limit:50  %}
+<div class="project-item">
+  <button class="project-btn">
+    {{ post.title }}
+  </button>
+  <div class="project-content" style="display:none;">
+    {{ post.content }}
+  </div>
+</div>
+    {% endfor %}
+  </div>
+      <br>
+      </div>
+    </section>
 
 <!-- accordion script -->
 <script>
@@ -177,7 +198,7 @@ function createModal(title, content) {
 
       <div class="modal-header">
         <span class="close">&times;</span>
-        <h2>${title}</h2>
+        <h4>${title}</h4>
       </div>
 
       <div class="modal-body">

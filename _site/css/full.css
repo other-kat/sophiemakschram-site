@@ -49,6 +49,11 @@ body {
     line-height: 1.4;
 }
 
+h4 {
+    font-size:2.5vh;
+    align: left;
+}
+
 .content {
   margin-top: 0;
   margin-right: 2em;
@@ -176,7 +181,6 @@ a.sub {
 .project-btn:hover {
   color: black;
   background-color: #c5dbd8;
-  text-shadow: none;
   transition: 0.4s;
 }
 .title-btn {
@@ -205,7 +209,6 @@ a.sub {
   pointer-events: none;
   z-index: 0;
 }
-
 /* Modal box */
 .modal-box {
   z-index: 1;
@@ -229,7 +232,6 @@ a.sub {
 /* Header (draggable) */
 .modal-header {
   background: rgba(50,50,50,0.2);
-  align: center;
   color: black;
   font-family: "Fraunces", serif;
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
@@ -239,14 +241,18 @@ a.sub {
   justify-content: space-between;
   align-items: center;
 }
-
 /* Close button */
 .modal-header .close {
-  font-size: 22px;
+  font-size: 3vh;
   color: black;
   font-family: "Fraunces", serif;
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
   cursor: pointer;
+}
+.modal-header .close:hover {
+    color: #c5dbd8;
+  text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
+  transition: 0.4s;
 }
 /* resize */
 .resize-handle {
