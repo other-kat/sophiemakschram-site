@@ -3,8 +3,8 @@
 @font-face { font-family: Fraunces; src: url('Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf'); } 
 
 h1 {
-  width: 100%;
   font-size:4vh;
+  margin: 0 auto;
   color: black;
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
   transition: 0.4s;
@@ -17,9 +17,7 @@ h1:hover {
   transition: 0.4s;
 }
 footer {
-  position: absolute;
   text-align: bottom-left;
-  width: 100%;
 }
 h3 {
   @apply text-2xl font-bold mb-3;
@@ -90,7 +88,6 @@ h1 {
 }
 /* does the text-shadow need to be this complicated?*/
 a {
-  display:inline;
   text-decoration: none;
   color: black;
   font-family: "Fraunces", serif;
@@ -158,7 +155,6 @@ a.sub {
   box-shadow: none;
   padding: 2em 2em;
   text-decoration: none;
-  display: inline-block;
   cursor: pointer;
    color: #c5dbd8;
    height: 2em;
@@ -166,11 +162,8 @@ a.sub {
 }
 .project-btn {
   background-color: rgba(0,0,0,0.0);
-  border: none;
-  box-shadow: none;
   padding: none;
   text-decoration: none;
-  display: inline-block;
   cursor: pointer;
   color: black;
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
@@ -187,9 +180,7 @@ a.sub {
   border: none;
   box-shadow: none;
   padding: none;
-  text-align: right;
   text-decoration: none;
-  display: inline-block;
   cursor: pointer;
   color: #c5dbd8;
   text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
