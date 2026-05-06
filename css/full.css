@@ -4,7 +4,7 @@
 
 h1 {
   font-size:4vh;
-  margin: 0 auto;
+  width: 100%;
   color: black;
   text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
   transition: 0.4s;
@@ -17,7 +17,7 @@ h1:hover {
   transition: 0.4s;
 }
 footer {
-  text-align: bottom-left;
+  text-align: left;
 }
 h3 {
   @apply text-2xl font-bold mb-3;
@@ -39,11 +39,9 @@ article {
 }
 iframe {
   padding: 20px;
-  align: left;
 }
 body {
     font-size:2.5vh;
-    overflow: hidden;
     background-image: url("bg1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
@@ -55,12 +53,10 @@ body {
 
 h4 {
     font-size:2.5vh;
-    align: left;
 }
 
 .buttonbar {
   height: 2em;
-  justify-content: bottom-left;
 }
 
 .disable {
@@ -103,7 +99,6 @@ a:hover {
 
 .section {
   margin-bottom: 0.5em;
-  margin-left: auto;
 }
 
 .heading {
@@ -262,7 +257,7 @@ a.sub {
 }
 /* Body */
 .modal-body {
-  align: center;
+  text-align: center;
   padding: 15px;
   overflow-y: auto; /* scroll if content too tall */
   flex: 1; /* fills remaining height */
@@ -286,7 +281,6 @@ a.sub {
 :root {
     font-family: "Fraunces", serif;
     font-size:2.5vh;
-    overflow: hidden;
     background-image: url("bg1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
