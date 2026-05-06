@@ -3,10 +3,12 @@
 @font-face { font-family: Fraunces; src: url('Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf'); } 
 
 h1 {
-font-size:4vh;
-color: black;
-text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
+  width: 100%;
+  font-size:4vh;
+  color: black;
+  text-shadow: 2px 2px 1px #c5dbd8, -2px 2px 1px #c5dbd8, 2px -2px 1px #c5dbd8, -2px -2px 1px #c5dbd8, 2px 0px 1px #c5dbd8, -2px 0px 1px #c5dbd8, 0px 2px 1px #c5dbd8, 0px -2px 1px #c5dbd8;
   transition: 0.4s;
+  text-align: center;
 }
 
 h1:hover {
@@ -14,7 +16,11 @@ h1:hover {
   text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
   transition: 0.4s;
 }
-
+footer {
+  position: absolute;
+  text-align: bottom-left;
+  width: 100%;
+}
 h3 {
   @apply text-2xl font-bold mb-3;
 }
@@ -27,6 +33,7 @@ body pre[class*="language-"] {
 html {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 article {
   color: black;
@@ -45,7 +52,6 @@ body {
     color: black;
     height: 110%;
     margin: 0px;
-    padding: 20px;
     line-height: 1.4;
 }
 
@@ -54,14 +60,9 @@ h4 {
     align: left;
 }
 
-.content {
-  margin-top: 0;
-  margin-right: 2em;
-  text-align: right;
-}
-
 .buttonbar {
   height: 2em;
+  justify-content: bottom-left;
 }
 
 .disable {
@@ -156,7 +157,6 @@ a.sub {
   border: none;
   box-shadow: none;
   padding: 2em 2em;
-  text-align: right;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -169,7 +169,6 @@ a.sub {
   border: none;
   box-shadow: none;
   padding: none;
-  text-align: right;
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
@@ -296,7 +295,6 @@ a.sub {
 :root {
     font-family: "Fraunces", serif;
     font-size:2.5vh;
-    text-align: right;
     overflow: hidden;
     background-image: url("bg1.jpg");
     background-repeat: no-repeat;
