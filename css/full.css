@@ -10,22 +10,29 @@ h1 {
   transition: 0.4s;
   text-align: center;
 }
-
+main {
+  text-align: none;
+}
+.content {
+  text-align: none;
+}
 h1:hover {
   color: #c5dbd8;
   text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
   transition: 0.4s;
 }
 footer {
+  position: fixed;
+  width: 100%;
+  min-height: 100%;
+  justify-content: bottom-left;
   text-align: left;
+}
+header {
+  text-align: center;
 }
 h3 {
   @apply text-2xl font-bold mb-3;
-}
-
-body :not(pre) > code[class*="language-"],
-body pre[class*="language-"] {
-  @apply bg-gray-800;
 }
 
 html {
@@ -41,12 +48,14 @@ iframe {
   padding: 20px;
 }
 body {
+
     font-size:2.5vh;
+    text-align: left;
     background-image: url("bg1.jpg");
     background-repeat: no-repeat;
     background-size:cover;
     color: black;
-    height: 110%;
+    height: 100vh;
     margin: 0px;
     line-height: 1.4;
 }
