@@ -20,6 +20,7 @@ h1:hover {
   color: #c5dbd8;
   text-shadow: 2px 2px 1px black, -2px 2px 1px black, 2px -2px 1px black, -2px -2px 1px black, 2px 0px 1px black, -2px 0px 1px black, 0px 2px 1px black, 0px -2px 1px black;
   transition: 0.4s;
+  font-size:6vh;
 }
 footer {
   position: fixed;
@@ -54,18 +55,16 @@ iframe {
   padding: 20px;
 }
 body {
-
     font-size:3vh;
-    text-align: left;
-    background-image: url("bg1.jpg");
+    text-align: center;
+    background-image: url("bgbl.png");
     background-repeat: no-repeat;
     background-size:cover;
     color: black;
     height: 100vh;
     margin: 0px;
-    line-height: 1.4;
+    line-height: 30;
 }
-
 h4 {
     font-size:3vh;
 }

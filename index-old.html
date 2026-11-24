@@ -1,0 +1,312 @@
+---
+layout: home
+---
+
+<body>
+    <section id="projects" class="section">
+      <button class="accordion"><p>projects</p></button>
+      <div class="panel">
+      <br>
+      <div id="post">
+    {% assign projects = site.projects | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in projects limit:50  %}
+<div class="project-item">
+  <button class="project-btn">
+    {{ post.title }}
+  </button>
+  <div class="project-content" style="display:none;">
+    {{ post.content }}
+  </div>
+</div>
+    {% endfor %}
+  </div>
+      <br>
+      </div>
+    </section>
+    <section id="performances" class="section">
+      <button class="accordion"><p>performances</p></button>
+      <div class="panel">
+      <br>
+      <div id="post">
+    {% assign performances = site.performances | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in performances limit:50  %}
+    <div class="project-item">
+  <button class="project-btn">
+    {{ post.title }}
+  </button>
+  <div class="project-content" style="display:none;">
+    {{ post.content }}
+  </div>
+</div>
+    {% endfor %}
+  </div>
+      <br>
+      </div>
+    </section>
+    <section id="writing" class="section">
+      <button class="accordion"><p>writing</p></button>
+      <div class="panel">
+      <br>
+      <div id="post">
+    {% assign writing = site.writing | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in writing limit:50  %}
+    <div class="project-item">
+  <button class="project-btn">
+    {{ post.title }}
+  </button>
+  <div class="project-content" style="display:none;">
+    {{ post.content }}
+  </div>
+</div>
+    {% endfor %}
+  </div>
+      <br>
+      </div>
+    </section>
+   <section id="workshops" class="section">
+      <button class="accordion"><p>workshops & talks</p></button>
+      <div class="panel">
+      <br>
+      <div id="post">
+    {% assign workshops = site.workshops | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in workshops limit:50  %}
+    <div class="project-item">
+  <button class="project-btn">
+    {{ post.title }}
+  </button>
+  <div class="project-content" style="display:none;">
+    {{ post.content }}
+  </div>
+</div>
+    {% endfor %}
+  </div>
+      <br>
+      </div>
+    </section>
+<section id="tailbenttravel" class="section">
+      <button class="accordion"><p>tail bent travel (2016 - 2019)</p></button>
+      <div class="panel">
+      <br>
+      <div id="post">
+    {% assign tailbenttravel = site.tailbenttravel | sort: date | reverse %}
+    {% if post.status == 'published' %}
+    {% endif %}
+    {% for post in tailbenttravel limit:50  %}
+<div class="project-item">
+  <button class="project-btn">
+    {{ post.title }}
+  </button>
+  <div class="project-content" style="display:none;">
+    {{ post.content }}
+  </div>
+</div>
+    {% endfor %}
+  </div>
+      <br>
+      </div>
+    </section>
+
+<!-- accordion script -->
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+
+    var panel = this.nextElementSibling;
+    var isOpen = panel.style.maxHeight;
+
+    for (var j = 0; j < acc.length; j++) {
+      acc[j].classList.remove("active");
+      acc[j].nextElementSibling.style.maxHeight = null;
+    }
+
+    if (!isOpen) {
+      this.classList.add("active");
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>
+
+<!-- ripple script -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="jquery.ripples.js"></script>
+<script>
+$(document).ready(function() {
+  try {
+    $('body').ripples({
+      resolution: 512,
+      dropRadius: 100, //px
+      perturbance: 0.01,
+    });
+  }
+  catch (e) {
+    $('.error').show().text(e);
+  }
+
+  $('.js-ripples-disable').on('click', function() {
+    $('body, main').ripples('destroy');
+    $(this).hide();
+  });
+});
+</script>
+<script>
+
+let zIndexCounter = 1000;
+
+document.addEventListener("click", function(e) {
+
+  var btn = e.target.closest(".project-btn, .title-btn");
+  if (!btn) return;
+
+  var contentDiv = btn.parentElement.querySelector(".project-content");
+  if (!contentDiv) return;
+
+  createModal(btn.textContent, contentDiv.innerHTML);
+
+});
+
+
+function createModal(title, content) {
+
+  var modal = document.createElement("div");
+  modal.className = "modal";
+  modal.style.display = "flex";
+
+  modal.innerHTML = `
+    <div class="modal-box">
+    <div class="resize top"></div>
+    <div class="resize bottom"></div>
+    <div class="resize left"></div>
+    <div class="resize right"></div>
+    <div class="resize top-left"></div>
+    <div class="resize top-right"></div>
+    <div class="resize bottom-left"></div>
+    <div class="resize bottom-right"></div>
+
+      <div class="modal-header">
+        <span class="close">&times;</span>
+        <h4>${title}</h4>
+      </div>
+
+      <div class="modal-body">
+        ${content}
+      </div>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  var box = modal.querySelector(".modal-box");
+
+  /* random start */
+  let offset = (zIndexCounter % 12) * 30;
+
+  box.style.left = 120 + offset + "px";
+  box.style.top = 80 + offset + "px";
+  box.style.transform = "none";
+
+  /* stacking */
+  // give each modal its own z-index on creation
+  box.style.zIndex = ++zIndexCounter;
+
+  modal.style.zIndex = box.style.zIndex;
+
+// bring modal to front when clicked anywhere inside it
+  box.addEventListener("mousedown", () => { box.style.zIndex = ++zIndexCounter; modal.style.zIndex = box.style.zIndex; });
+
+  var close = modal.querySelector(".close");
+
+  /* close button */
+  close.onclick = () => modal.remove();
+
+  /* click outside */
+
+
+  makeDraggable(box);
+  makeResizable(box);
+}
+
+
+function makeDraggable(box) {
+
+  var header = box.querySelector(".modal-header");
+
+  var isDragging = false;
+  var offsetX, offsetY;
+
+  header.addEventListener("mousedown", function(e) {
+
+    isDragging = true;
+
+    box.style.zIndex = ++zIndexCounter;
+
+    offsetX = e.clientX - box.offsetLeft;
+    offsetY = e.clientY - box.offsetTop;
+
+    document.body.style.userSelect = "none";
+  });
+
+  document.addEventListener("mousemove", function(e) {
+
+    if (!isDragging) return;
+
+    box.style.left = e.clientX - offsetX + "px";
+    box.style.top = e.clientY - offsetY + "px";
+    box.style.transform = "none";
+
+  });
+
+  document.addEventListener("mouseup", function() {
+
+    isDragging = false;
+    document.body.style.userSelect = "auto";
+
+  });
+
+}
+function makeResizable(box){
+  let startX, startY, startW, startH, startL, startT, dir = null;
+
+  box.querySelectorAll(".resize").forEach(handle => {
+    handle.addEventListener("mousedown", e => {
+      dir = handle.classList[1];
+      startX = e.clientX;
+      startY = e.clientY;
+      startW = box.offsetWidth;
+      startH = box.offsetHeight;
+      startL = box.offsetLeft;
+      startT = box.offsetTop;
+      document.body.style.userSelect = "none";
+      e.stopPropagation();
+    });
+  });
+
+  document.addEventListener("mousemove", e => {
+    if(!dir) return;
+    let dx = e.clientX - startX;
+    let dy = e.clientY - startY;
+
+    if(dir.includes("right")) box.style.width = startW + dx + "px";
+    if(dir.includes("left")) { box.style.width = startW - dx + "px"; box.style.left = startL + dx + "px"; }
+    if(dir.includes("bottom")) box.style.height = startH + dy + "px";
+    if(dir.includes("top")) { box.style.height = startH - dy + "px"; box.style.top = startT + dy + "px"; }
+  });
+
+  document.addEventListener("mouseup", () => {
+    dir = null;
+    document.body.style.userSelect = "auto";
+  });
+}
+
+</script>
